@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário - PlayStation Store</title>
+    <style>
+        /* RESET E ESTILOS GLOBAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* VARIÁVEIS DE CORES PLAYSTATION */
+        :root {
+            --ps-blue: #003791;
+            --ps-dark-blue: #002c6a;
+            --ps-orange: #cd3d0f;
+            --ps-dark-orange: #b3320a;
+            --ps-gold: #ffd700;
+            --ps-white: #ffffff;
+            --ps-light-gray: #f5f5f5;
+            --ps-gray: #cccccc;
+            --ps-dark-gray: #1a1a1a;
+        }
+
+        /* HEADER SIMPLES */
+        .header {
+            background-color: var(--ps-blue);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0, 55, 145, 0.3);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 32px;
+        }
+
+        .logo span {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .user-actions i {
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* CONTEÚDO PRINCIPAL */
+        .main-content {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+            flex: 1;
+            width: 100%;
+        }
+
+        /* TÍTULOS */
+        .page-title {
+            font-size: 42px;
+            color: white;
+            margin-bottom: 10px;
+            font-weight: 800;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .page-subtitle {
+            font-size: 22px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            height: 3px;
+            background: linear-gradient(90deg, var(--ps-orange), var(--ps-gold), var(--ps-orange));
+            margin: 30px 0 50px 0;
+            border-radius: 3px;
+        }
+
+        /* CARD DO FORMULÁRIO */
+        .form-card {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* GRUPO DE CAMPOS */
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ps-dark-gray);
+            margin-bottom: 10px;
+        }
+
+        .form-label i {
+            color: var(--ps-orange);
+            margin-right: 10px;
+            width: 24px;
+        }
+
+        /* CAMPOS DE INPUT */
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: 2px solid var(--ps-gray);
+            border-radius: 15px;
+            outline: none;
+            transition: all 0.3s;
+            background-color: var(--ps-light-gray);
+        }
+
+        .form-input:focus {
+            border-color: var(--ps-blue);
+            box-shadow: 0 0 0 3px rgba(0, 55, 145, 0.2);
+            background-color: white;
+        }
+
+        .form-input:hover {
+            border-color: var(--ps-orange);
+        }
+
+        /* CAMPO DE TEXTO (DESCRIÇÃO) */
+        .form-textarea {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: 2px solid var(--ps-gray);
+            border-radius: 15px;
+            outline: none;
+            transition: all 0.3s;
+            background-color: var(--ps-light-gray);
+            resize: vertical;
+            min-height: 120px;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .form-textarea:focus {
+            border-color: var(--ps-blue);
+            box-shadow: 0 0 0 3px rgba(0, 55, 145, 0.2);
+            background-color: white;
+        }
+
+        .form-textarea:hover {
+            border-color: var(--ps-orange);
+        }
+
+        /* CONTAINER DOS BOTÕES - APENAS DOIS */
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        /* ESTILO DOS BOTÕES */
+        .btn {
+            padding: 18px 45px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            min-width: 250px;
+            justify-content: center;
+        }
+
+        .btn i {
+            font-size: 22px;
+        }
+
+        /* BOTÃO DA HOME PAGE (/) */
+        .btn-home {
+            background: linear-gradient(145deg, var(--ps-blue), #1a4a9e);
+            color: white;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 55, 145, 0.5);
+        }
+
+        /* BOTÃO DA PÁGINA /lista */
+        .btn-lista {
+            background: linear-gradient(145deg, var(--ps-orange), #ff6b4a);
+            color: white;
+        }
+
+        .btn-lista:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(205, 61, 15, 0.5);
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: var(--ps-dark-gray);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .footer p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 36px;
+            }
+            
+            .page-subtitle {
+                font-size: 18px;
+            }
+            
+            .form-card {
+                padding: 30px 20px;
+            }
+            
+            .btn {
+                padding: 15px 30px;
+                font-size: 18px;
+                min-width: 220px;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-input, .form-textarea {
+                padding: 12px 15px;
+            }
+            
+            .form-label {
+                font-size: 16px;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-card {
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        /* ESTILO ADICIONAL PLAYSTATION */
+        .ps-decoration {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ps-decoration::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0,55,145,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+    </style>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER SIMPLES -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fab fa-playstation"></i>
+                <span>PlayStation Store</span>
+            </div>
+            <div class="user-actions">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+        <h1 class="page-title">Bem-vindo ao questionário!</h1>
+        <h3 class="page-subtitle">Digite seus dados aqui!</h3>
+        <hr>
+
+        <!-- CARD DO FORMULÁRIO COM 3 NOVAS PERGUNTAS -->
+        <div class="form-card ps-decoration">
+            <!-- PERGUNTA 1: NOME DO JOGO -->
+            <div class="form-group">
+                <label class="form-label">
+                    <i class="fas fa-gamepad"></i>
+                    Nome do Jogo:
+                </label>
+                <input type="text" class="form-input" placeholder="Digite o nome do jogo">
+            </div>
+
+            <!-- PERGUNTA 2: SUA AVALIAÇÃO -->
+            <div class="form-group">
+                <label class="form-label">
+                    <i class="fas fa-star"></i>
+                    Sua avaliação:
+                </label>
+                <input type="text" class="form-input" placeholder="Ex: 5 estrelas, Ótimo, Razoável, etc">
+            </div>
+
+            <!-- PERGUNTA 3: SUA DESCRIÇÃO -->
+            <div class="form-group">
+                <label class="form-label">
+                    <i class="fas fa-pencil-alt"></i>
+                    Sua descrição:
+                </label>
+                <textarea class="form-textarea" placeholder="Descreva sua experiência com o jogo..."></textarea>
+            </div>
+
+            <!-- ÍCONE DECORATIVO PLAYSTATION (APENAS VISUAL) -->
+            <div style="text-align: center; margin-top: 20px; opacity: 0.3;">
+                <i class="fab fa-playstation" style="font-size: 40px; color: var(--ps-blue);"></i>
+            </div>
+        </div>
+
+        <!-- CONTAINER APENAS COM OS DOIS BOTÕES SOLICITADOS -->
+        <div class="buttons-container">
+            <!-- BOTÃO 1: HOME PAGE (/) -->
+            <a href="/" class="btn btn-home">
+                <i class="fas fa-home"></i>
+                Página Inicial
+            </a>
+            
+            <!-- BOTÃO 2: PÁGINA /lista -->
+            <a href="/lista" class="btn btn-lista">
+                <i class="fas fa-list"></i>
+                Lista de Jogos
+            </a>
+        </div>
+    </main>
+
+    <!-- FOOTER SIMPLES -->
+    <footer class="footer">
+        <p>&copy; 2024 Sony Interactive Entertainment Inc. Todos os direitos reservados.</p>
+        <p style="margin-top: 10px;">Questionário - PlayStation Store</p>
+    </footer>
+</body>
+</html> 

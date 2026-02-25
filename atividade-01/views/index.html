@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayStation Store - Página Inicial</title>
+    <style>
+        /* RESET E ESTILOS GLOBAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* VARIÁVEIS DE CORES */
+        :root {
+            --ps-blue: #003791;
+            --ps-dark-blue: #002c6a;
+            --ps-orange: #cd3d0f;
+            --ps-white: #ffffff;
+            --ps-light-gray: #f5f5f5;
+        }
+
+        /* HEADER SIMPLES */
+        .header {
+            background-color: var(--ps-blue);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 32px;
+        }
+
+        .logo span {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* HERO BANNER - ÁREA PRINCIPAL */
+        .hero {
+            background: linear-gradient(135deg, var(--ps-blue) 0%, #1a4a9e 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            animation: fadeIn 1s ease 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* CONTAINER DOS BOTÕES - APENAS OS DOIS SOLICITADOS */
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease 0.4s both;
+        }
+
+        /* ESTILO DOS BOTÕES */
+        .btn {
+            padding: 20px 50px;
+            font-size: 22px;
+            font-weight: bold;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            min-width: 280px;
+            justify-content: center;
+        }
+
+        .btn i {
+            font-size: 26px;
+        }
+
+        /* BOTÃO DA LISTA DE JOGOS */
+        .btn-jogos {
+            background: linear-gradient(145deg, var(--ps-orange), #ff6b4a);
+            color: white;
+        }
+
+        .btn-jogos:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(205, 61, 15, 0.5);
+        }
+
+        /* BOTÃO DO FORMULÁRIO */
+        .btn-form {
+            background: linear-gradient(145deg, var(--ps-white), #f0f0f0);
+            color: var(--ps-blue);
+        }
+
+        .btn-form:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        /* SEÇÃO DE INFORMAÇÃO SIMPLES */
+        .info-section {
+            background-color: var(--ps-white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .info-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-content h2 {
+            font-size: 36px;
+            color: var(--ps-blue);
+            margin-bottom: 30px;
+        }
+
+        .info-content p {
+            font-size: 18px;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        /* CARDS SIMPLES PARA ILUSTRAR */
+        .simple-cards {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .simple-card {
+            background: linear-gradient(135deg, var(--ps-light-gray), #ffffff);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .simple-card i {
+            font-size: 48px;
+            color: var(--ps-orange);
+            margin-bottom: 20px;
+        }
+
+        .simple-card h3 {
+            color: var(--ps-blue);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .simple-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* FOOTER SIMPLES */
+        .footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                font-size: 20px;
+            }
+            
+            .btn {
+                padding: 15px 30px;
+                font-size: 18px;
+                min-width: 240px;
+            }
+            
+            .buttons-container {
+                gap: 20px;
+            }
+            
+            .info-content h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .btn {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+                padding: 0 20px;
+            }
+            
+            .logo span {
+                font-size: 20px;
+            }
+        }
+
+        /* ANIMAÇÃO DE PULSO PARA DESTAQUE */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .btn-jogos {
+            animation: pulse 2s infinite;
+        }
+    </style>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- HEADER SIMPLES -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fab fa-playstation"></i>
+                <span>PlayStation Store</span>
+            </div>
+            <!-- Apenas ícones de usuário para simplicidade -->
+            <div class="user-actions">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO BANNER PRINCIPAL - APENAS OS DOIS BOTÕES -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>PlayStation Store</h1>
+            <p>Sua loja oficial de jogos PlayStation</p>
+            
+            <!-- CONTAINER APENAS COM OS DOIS BOTÕES SOLICITADOS -->
+            <div class="buttons-container">
+                <!-- BOTÃO 1: LISTA DE JOGOS - LINK PARA lista.html -->
+                <a href="/lista" class="btn btn-jogos">
+                    <i class="fas fa-gamepad"></i>
+                    Lista de Jogos
+                </a>
+                
+                <!-- BOTÃO 2: FORMULÁRIO - LINK PARA formulario.html -->
+                <a href="/formulario" class="btn btn-form">
+                    <i class="fas fa-envelope"></i>
+                    Formulário
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO INFORMATIVA SIMPLES -->
+    <section class="info-section">
+        <div class="info-content">
+            <h2>Bem-vindo à PlayStation Store</h2>
+            <p>Explore nosso catálogo completo de jogos e entre em contato conosco através dos botões acima.</p>
+            
+            <!-- Cards ilustrativos -->
+            <div class="simple-cards">
+                <div class="simple-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Lista de Jogos</h3>
+                    <p>Clique no botão "Lista de Jogos" para ver nosso catálogo completo com todos os títulos disponíveis.</p>
+                </div>
+                
+                <div class="simple-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Formulário de Contato</h3>
+                    <p>Clique no botão "Formulário" para entrar em contato com nossa equipe de suporte.</p>
+                </div>
+            </div>
+            
+            <!-- Mensagem adicional -->
+            <p style="margin-top: 40px; font-style: italic; color: #888;">
+                Use os botões acima para navegar para as outras seções do site.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER SIMPLES -->
+    <footer class="footer">
+        <p>&copy; 2024 Sony Interactive Entertainment Inc. Todos os direitos reservados.</p>
+        <p style="margin-top: 10px;">Este é um site conceitual - Página Inicial da PlayStation Store</p>
+    </footer>
+</body>
+</html>
