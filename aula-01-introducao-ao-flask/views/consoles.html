@@ -9,6 +9,20 @@
     <h1>Bem-vindo à página de consoles!</h1>
     <h3>Seus consoles favoritos estão aqui!</h3>
     <hr>
-    
+    <a href="/">Voltar</a>
+    <h1>Consoles</h1>
+    <hr>
+    <h2>Consoles em destaque:</h2>
+
+
+    {% for chave, valor in console.items() %}
+     <details>
+        <summary>{{ chave }}</summary>
+        <p>{{ valor }}</p>
+     </details>    
+
+
+    {% endfor %}
+
 </body>
 </html>

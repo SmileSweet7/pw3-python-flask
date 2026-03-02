@@ -9,6 +9,21 @@
     <h1>Bem-vindo à página de games!</h1>
     <h3>Seus jogos favoritos estão aqui!</h3>
     <hr>
-    
+    <a href="/">Voltar</a>
+    <h1>Página de games</h1>
+    <h2>Jogo em destaque</h2>
+    <p>Game mais jogado pelos nossos usuários:</p>
+    <ul>
+        <li>Título: <strong> {{ titulo }} </strong></li>
+        <li>Ano: <strong>{{ ano }} </strong></li>
+        <li>Categoria: <strong>{{ categoria }} </strong></li>
+        <li>O jogo {{titulo}} tem {{2026-ano}} anos!</li>
+    </ul>
+    <h3>Top Players (Ranking de jogadores)</h3>
+    <ol>
+        {% for jogador in jogadores: %}
+        <li>{{ jogador }}</li>
+        {% endfor %}
+    </ol>
 </body>
 </html>

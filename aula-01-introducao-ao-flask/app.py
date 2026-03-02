@@ -14,10 +14,28 @@ def home():
     return render_template('index.html')
 @app.route('/games')
 def games():
-    return render_template('games.html')
+    # Criando variáveis para a rota de games
+    titulo = "Portal 2"
+    ano = 2011
+    categoria = "Puzzle"
+    # Lista de jogadores
+    jogadores = ['Marcos', 'Richard', 'Miguel', 'Renato', 'Pedro']
+    
+    return render_template('games.html',
+                           titulo = titulo,
+                           ano = ano,
+                           categoria = categoria,
+                           jogadores = jogadores)
+                           
+
 @app.route('/consoles')
 def consoles():
-    return render_template('consoles.html')
+    #Criando um objeto
+    console = {"Nome" : "Playstation 2 ",
+               "Fabricante": "Sony",
+               "Ano" : 2000}
+    return render_template('consoles.html',
+                           console=console)
 
 
 # Iniciando o servidor na porta 5000
