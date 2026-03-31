@@ -1,23 +1,16 @@
 # Importando o flask para a aplicação
 from flask import Flask, render_template
+
+from controllers import routes
 # Carregando o flask na variável "app"
 # Declarando variável no Python
 app = Flask(__name__, template_folder='views')
 #Variáveis com __ são variáveis de ambiente do Python 
 #__name__ representa o nome da aplicação
 
-# Criando a rota principal do site
-# @ liga a rota a função ligada a ela
-@app.route('/')
-#def cria funções no Python
-def home():
-    return render_template('index.html')
-@app.route('/lista')
-def lista():
-    return render_template('lista.html')
-@app.route('/formulario')
-def formulario():
-    return render_template('formulario.html')
+routes.init_app(app)
+
+
 
 
 # Iniciando o servidor na porta 5000

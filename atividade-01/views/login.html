@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-
     <!-- HEADER SIMPLES -->
     <header class="header">
         <div class="header-container">
@@ -16,38 +15,50 @@
 
     <!-- CONTEÚDO PRINCIPAL -->
     <main class="main-content">
-        <h1 class="page-title">Bem-vindo ao questionário!</h1>
+        <h1 class="page-title">Bem-vindo a Playstation Store!</h1>
         <h3 class="page-subtitle">Digite seus dados aqui!</h3>
         <hr>
 
-        <!-- CARD DO FORMULÁRIO COM 3 NOVAS PERGUNTAS -->
+        <!-- CARD DO FORMULÁRIO COM 4 NOVAS PERGUNTAS -->
         <div class="form-card ps-decoration">
-            <!-- PERGUNTA 1: NOME DO JOGO -->
+            <!-- PERGUNTA 1: NOME -->
             <div class="form-group">
                 <label class="form-label">
                     <i class="fas fa-gamepad"></i>
-                    Nome do Jogo:
+                    Nome:
                 </label>
-                <input type="text" class="form-input" placeholder="Digite o nome do jogo">
+                <input type="text" class="form-input" placeholder="Digite o seu nome">
             </div>
 
-            <!-- PERGUNTA 2: SUA AVALIAÇÃO -->
+            <!-- PERGUNTA 2: SUA IDADE -->
             <div class="form-group">
                 <label class="form-label">
                     <i class="fas fa-star"></i>
-                    Sua avaliação:
+                    Sua idade:
                 </label>
-                <input type="text" class="form-input" placeholder="Ex: 5 estrelas, Ótimo, Razoável, etc">
+                <input type="text" class="form-input" placeholder="Ex: 10, 50, 100, etc">
             </div>
 
-            <!-- PERGUNTA 3: SUA DESCRIÇÃO -->
+            <!-- PERGUNTA 3: SEU EMAIL -->
             <div class="form-group">
                 <label class="form-label">
                     <i class="fas fa-pencil-alt"></i>
-                    Sua descrição:
+                    Seu email:
                 </label>
-                <textarea class="form-textarea" placeholder="Descreva sua experiência com o jogo..."></textarea>
+                <textarea class="form-textarea" placeholder="Digite seu email"></textarea>
             </div>
+
+            <!-- PERGUNTA 4: SUA SENHA -->
+            <div class="form-group">
+                <label class="form-label">
+                    <i class="fas fa-pencil-alt"></i>
+                    Sua senha:
+                </label>
+                <textarea class="form-textarea" placeholder="Digite sua senha"></textarea>
+            </div>
+
+
+            
 
             <!-- ÍCONE DECORATIVO PLAYSTATION (APENAS VISUAL) -->
             <div style="text-align: center; margin-top: 20px; opacity: 0.3;">
@@ -68,6 +79,10 @@
                 <i class="fas fa-list"></i>
                 Lista de Jogos
             </a>
+             <a href="/formulario" class="btn btn-formulario">
+                <i class="fas fa-formulario"></i>
+                Formulario
+            </a>
         </div>
     </main>
 
@@ -76,4 +91,4 @@
         <p>&copy; 2024 Sony Interactive Entertainment Inc. Todos os direitos reservados.</p>
         <p style="margin-top: 10px;">Questionário - PlayStation Store</p>
     </footer>
-    {% endblock content %}
+{% endblock content %}
